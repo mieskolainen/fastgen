@@ -64,7 +64,7 @@ limits.mmax = 2.5;
 
 %% Fiducial acceptance cuts
 
-fcuts_on = false;    % Cuts on/off (PLAY WITH THIS FIRST!)
+fcuts_on = true;    % Cuts on/off (PLAY WITH THIS FIRST!)
 etamax   = 0.9;     % Absolute pseudorapidity of final state particles
 ptmin    = 0.175;   % Minimum pt of final state particles
 
@@ -194,36 +194,36 @@ f2 = figure;
 subplot(1,5,1);
 [X,bins] = hist3(costhphivals, [50 50]); imagesc(bins{1}, bins{2}, X'); axis square;
 xlabel('$\cos \theta$','interpreter','latex','fontsize',8);
-ylabel('$\phi$ (rad)','interpreter','latex');
-title(sprintf('RF, $S = %0.2f$', shannonentropy(X)),'interpreter','latex','fontsize',8);
+ylabel('$\phi$ (rad)','interpreter','latex','fontsize',8);
+title(sprintf('RF, $S = %0.2f$', shannonentropy(X)),'interpreter','latex','fontsize',6);
 set(gca,'yDir','normal'); axis([-1.0 1.0 -pi pi]);
 
 subplot(1,5,2);
 [XGJ,bins] = hist3(costhphivalsGJ, [50 50]); imagesc(bins{1}, bins{2}, XGJ'); axis square;
 xlabel('$\cos \theta$','interpreter','latex','fontsize',8);
-ylabel('$\phi$ (rad)','interpreter','latex');
-title(sprintf('GJP, $S = %0.2f$', shannonentropy(XGJ)),'interpreter','latex','fontsize',8);
+ylabel('$\phi$ (rad)','interpreter','latex','fontsize',8);
+title(sprintf('GJP, $S = %0.2f$', shannonentropy(XGJ)),'interpreter','latex','fontsize',6);
 set(gca,'yDir','normal'); axis([-1.0 1.0 -pi pi]); colormap('hot');
 
 subplot(1,5,3);
 [XHE,bins] = hist3(costhphivalsHE, [50 50]); imagesc(bins{1}, bins{2}, XHE'); axis square;
 xlabel('$\cos \theta$','interpreter','latex','fontsize',8);
-ylabel('$\phi$ (rad)','interpreter','latex');
-title(sprintf('Helicity, $S = %0.2f$', shannonentropy(XHE)),'interpreter','latex','fontsize',8);
+ylabel('$\phi$ (rad)','interpreter','latex','fontsize',8);
+title(sprintf('Helicity, $S = %0.2f$', shannonentropy(XHE)),'interpreter','latex','fontsize',6);
 set(gca,'yDir','normal'); axis([-1.0 1.0 -pi pi]); colormap('hot');
 
 subplot(1,5,4);
 [XCS,bins] = hist3(costhphivalsCS, [50 50]); imagesc(bins{1}, bins{2}, XCS'); axis square;
 xlabel('$\cos \theta$','interpreter','latex','fontsize',8);
-ylabel('$\phi$ (rad)','interpreter','latex');
-title(sprintf('Collins-Soper, $S = %0.2f$', shannonentropy(XCS)),'interpreter','latex','fontsize',8);
+ylabel('$\phi$ (rad)','interpreter','latex','fontsize',8);
+title(sprintf('Collins-Soper, $S = %0.2f$', shannonentropy(XCS)),'interpreter','latex','fontsize',6);
 set(gca,'yDir','normal'); axis([-1.0 1.0 -pi pi]); colormap('hot');
 
 subplot(1,5,5);
 [XBE,bins] = hist3(costhphivalsBE, [50 50]); imagesc(bins{1}, bins{2}, XBE'); axis square;
 xlabel('$\cos \theta$','interpreter','latex','fontsize',8);
-ylabel('$\phi$ (rad)','interpreter','latex');
-title(sprintf('Anti-Helicity, $S = %0.2f$', shannonentropy(XBE)),'interpreter','latex','fontsize',8);
+ylabel('$\phi$ (rad)','interpreter','latex','fontsize',8);
+title(sprintf('Anti-Helicity, $S = %0.2f$', shannonentropy(XBE)),'interpreter','latex','fontsize',6);
 set(gca,'yDir','normal'); axis([-1.0 1.0 -pi pi]); colormap('hot');
 
 % Print out pdf
