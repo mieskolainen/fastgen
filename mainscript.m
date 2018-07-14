@@ -19,7 +19,9 @@
 % mikael.mieskolainen@cern.ch, 13/07/2018
 clear; close all;
 
-rng('default');   % Random numbers
+addpath('src');
+
+rng('default');   % Random number init
 
 mpi = 0.139570;   % Charged pion mass
 mK  = 0.493677;   % Charged kaon mass
@@ -62,7 +64,7 @@ limits.mmax = 2.5;
 
 %% Fiducial acceptance cuts
 
-fcuts_on = true;    % Cuts on/off (PLAY WITH THIS FIRST!)
+fcuts_on = false;    % Cuts on/off (PLAY WITH THIS FIRST!)
 etamax   = 0.9;     % Absolute pseudorapidity of final state particles
 ptmin    = 0.175;   % Minimum pt of final state particles
 
@@ -155,7 +157,7 @@ fprintf('Mean system pt = %0.2f GeV \n', mean(ptvals));
 %  https://github.com/mieskolainen/matlabcodes . hist() ok for quick tests.]
 close all;
 
-figure;
+f1 = figure;
 subplot(3,3,1);
 hist(ptvals, 100); axis square; xlabel('system $P_t$ (GeV)','interpreter','latex'); axis([0 2 0 inf]);
 
@@ -183,10 +185,11 @@ colormap(hot);
 
 % Print out pdf
 outputstr = sprintf('./pdf/output_kinematics_fiducial_%d.pdf', fcuts_on);
-eval(sprintf('print -dpdf %s', outputstr));
+print(f1, outputstr, '-dpdf');
 system(sprintf('pdfcrop --margins 10 %s %s', outputstr, outputstr));
 
-figure;
+
+f2 = figure;
 
 subplot(1,5,1);
 [X,bins] = hist3(costhphivals, [50 50]); imagesc(bins{1}, bins{2}, X'); axis square;
@@ -225,6 +228,6 @@ set(gca,'yDir','normal'); axis([-1.0 1.0 -pi pi]); colormap('hot');
 
 % Print out pdf
 outputstr = sprintf('./pdf/output_frames_fiducial_%d.pdf', fcuts_on);
-eval(sprintf('print -dpdf %s', outputstr));
+print(f2, outputstr, '-dpdf');
 system(sprintf('pdfcrop --margins 10 %s %s', outputstr, outputstr));
 
